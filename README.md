@@ -1,14 +1,14 @@
 Requirements:
-	Node.js
-	NPM
-	Ruby
-	Sass Gem
+    Node.js
+    NPM
+    Ruby
+    Sass Gem
 
 
 To Open Anatomy Console:
-	npm run start
+    npm run start
 
-To Build Anatomy-SemanticUI files:
-	./node_modules/grunt/bin/grunt build-sass
+To Build Anatomy Web files:
+    ./node_modules/grunt/bin/grunt build-sass
 or
-	anatomy-semanticui@1.0.0 /anatomy-semanticui/ >> build
+    anatomy-web@1.0.0 /anatomy-web/ >> build
