@@ -3,7 +3,7 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		jshint: {
-			files: ['gruntfile.js', 'src/components/*.js'],
+			files: ['src/components/*.js'],
 			options: {
 				asi: true,
 				sub: true
@@ -15,14 +15,14 @@ module.exports = function(grunt) {
 						style: 'compressed'
 				},
 				files: {
-					'bin/<%= pkg.name %>.css': 'src/styles/main.scss'
+					'dist/<%= pkg.name %>.css': 'src/styles/main.scss'
 				}
 			}
 		},
 		concat: {
 			build: {
 				src: 'src/**/*.js',
-				dest: 'bin/<%= pkg.name %>.js'
+				dest: 'dist/<%= pkg.name %>.js'
 			}
 		},
 		uglify: {
@@ -30,8 +30,8 @@ module.exports = function(grunt) {
 				banner: '/*! <%= pkg.name %> <%= pkg.version %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
 			},
 			build: {
-				src: 'bin/<%= pkg.name %>.js',
-				dest: 'bin/<%= pkg.name %>.min.js'
+				src: 'dist/<%= pkg.name %>.js',
+				dest: 'dist/<%= pkg.name %>.min.js'
 			}
 		},
 		watch: {
@@ -43,14 +43,6 @@ module.exports = function(grunt) {
 				files: ['src/styles/*.scss'],
 				tasks: ['sass']
 			}
-		},
-		copy: {
-			ractive: {
-				files: [
-					{ src: 'node_modules/ractive/ractive.min.js', dest: 'bin/' },
-					{ src: 'node_modules/ractive/ractive.min.js', dest: 'bin/' }
-				]
-			}
 		}
 	});
 
@@ -59,7 +51,6 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-contrib-copy');
 
 
 	grunt.registerTask('build-js', ['jshint', 'concat', 'uglify']);
